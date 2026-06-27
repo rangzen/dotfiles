@@ -36,7 +36,7 @@ brew install stow
 Clone the repo next to your home directory or anywhere you like, then `cd` into it and run `stow <package>`:
 
 ```bash
-git clone git@github.com:rangzen/dotfiles.git ~/.dotfiles
+git clone https://github.com/rangzen/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 
 # Install a single package
