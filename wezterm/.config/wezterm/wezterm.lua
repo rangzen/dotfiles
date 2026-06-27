@@ -18,4 +18,7 @@ return {
 		top = 0,
 		bottom = 0,
 	},
+
+	-- Run tmux directly
+	default_prog = { "tmux", "new-session", "-A", "-s", "main" },
 }
