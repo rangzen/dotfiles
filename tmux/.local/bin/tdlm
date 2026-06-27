@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Usage: tdlm <ai> [<second_ai>]
+# Create one tdl window per subdirectory of current directory
+[[ -z $1 ]] && { echo "Usage: tdlm <ai> [<ai2>]"; echo "  <ai>, <ai2>  CLI command to launch in the AI pane(s), e.g. claude, opencode, gemini, mods"; exit 1; }
+[[ -z $TMUX ]] && { echo "You must start tmux to use tdlm."; exit 1; }
+
+ai="$1"
+ai2="$2"
+base_dir="$PWD"
+first=true
+
+tmux rename-session "$(basename "$base_dir" | tr '.:' '--')"
+
+for dir in "$base_dir"/*/; do
+  [[ -d $dir ]] || continue
+  dirpath="${dir%/}"
+
+  if $first; then
+    tmux send-keys -t "$TMUX_PANE" "cd '$dirpath' && tdl $ai $ai2" C-m
+    first=false
+  else
+    pane_id=$(tmux new-window -c "$dirpath" -P -F '#{pane_id}')
+    tmux send-keys -t "$pane_id" "tdl $ai $ai2" C-m
+  fi
+done

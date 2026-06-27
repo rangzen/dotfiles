@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Usage: tds
+# Create square layout: nvim, diff watch, terminal, opencode
+[[ -n $1 ]] && { echo "Usage: tds"; exit 1; }
+[[ -z $TMUX ]] && { echo "You must start tmux to use tds."; exit 1; }
+
+current_dir="${PWD}"
+editor_pane="$TMUX_PANE"
+
+tmux rename-window -t "$editor_pane" "$(basename "$current_dir")"
+
+terminal_pane=$(tmux split-window -v -l 50% -t "$editor_pane" -c "$current_dir" -P -F '#{pane_id}')
+diff_pane=$(tmux split-window -h -l 50% -t "$editor_pane" -c "$current_dir" -P -F '#{pane_id}')
+opencode_pane=$(tmux split-window -h -l 50% -t "$terminal_pane" -c "$current_dir" -P -F '#{pane_id}')
+
+tmux send-keys -t "$editor_pane" "nvim ." C-m
+tmux send-keys -t "$diff_pane" "hunk diff --watch" C-m
+tmux send-keys -t "$opencode_pane" "opencode" C-m
+
+tmux select-pane -t "$editor_pane"

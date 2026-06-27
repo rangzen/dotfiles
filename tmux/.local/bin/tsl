@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Usage: tsl <count> <command>
+# Create N tiled panes all running the same command
+[[ -z $1 || -z $2 ]] && { echo "Usage: tsl <count> <command>"; exit 1; }
+[[ -z $TMUX ]] && { echo "You must start tmux to use tsl."; exit 1; }
+
+count="$1"
+cmd="$2"
+current_dir="${PWD}"
+panes=("$TMUX_PANE")
+
+tmux rename-window -t "$TMUX_PANE" "$(basename "$current_dir")"
+
+while (( ${#panes[@]} < count )); do
+  new_pane=$(tmux split-window -h -t "${panes[-1]}" -c "$current_dir" -P -F '#{pane_id}')
+  panes+=("$new_pane")
+  tmux select-layout -t "${panes[0]}" tiled
+done
+
+for pane in "${panes[@]}"; do
+  tmux send-keys -t "$pane" "$cmd" C-m
+done
+
+tmux select-pane -t "${panes[0]}"

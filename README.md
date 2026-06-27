@@ -9,9 +9,15 @@ Each top-level directory is a **stow package** — its contents mirror the struc
 ```
 dotfiles/
 ├── tmux/
-│   └── .config/
-│       └── tmux/
-│           └── tmux.conf   → ~/.config/tmux/tmux.conf
+│   ├── .config/
+│   │   └── tmux/
+│   │       └── tmux.conf       → ~/.config/tmux/tmux.conf
+│   └── .local/
+│       └── bin/
+│           ├── tdl             → ~/.local/bin/tdl
+│           ├── tds             → ~/.local/bin/tds
+│           ├── tdlm            → ~/.local/bin/tdlm
+│           └── tsl             → ~/.local/bin/tsl
 └── ...
 ```
 
@@ -56,4 +62,17 @@ stow --target="$HOME" tmux
 
 | Package | Description |
 |---------|-------------|
-| `tmux`  | tmux config (`~/.config/tmux/tmux.conf`) |
+| `tmux`  | tmux config (`~/.config/tmux/tmux.conf`) and layout scripts (`~/.local/bin/`) |
+
+### tmux layout commands
+
+Source: adapted from [Omarchy hotkeys](https://learn.omacom.io/2/the-omarchy-manual/53/hotkeys#tmux-layout-functions). Must be run inside a tmux session.
+
+| Command | Usage | Description |
+|---------|-------|-------------|
+| `tdl` | `tdl <ai> [<ai2>]` | Dev layout: editor (nvim) left, AI pane(s) right, terminal strip at bottom |
+| `tds` | `tds` | Square layout: nvim, diff watch (`hunk diff --watch`), terminal, opencode |
+| `tdlm` | `tdlm <ai> [<ai2>]` | Runs `tdl` in one window per subdirectory of the current directory |
+| `tsl` | `tsl <count> <cmd>` | Opens N tiled panes all running the same command (useful for AI swarms) |
+
+`<ai>` and `<ai2>` are any CLI command to launch in the AI pane(s), e.g. `claude`, `opencode`, `gemini`, `mods`.
