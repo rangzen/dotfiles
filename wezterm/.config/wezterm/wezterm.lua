@@ -2,8 +2,12 @@ local wezterm = require("wezterm")
 
 -- Start fullscreen
 wezterm.on("gui-startup", function(cmd)
-  local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
-  window:gui_window():toggle_fullscreen()
+	local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
+	local gui_win = window:gui_window()
+	local screens = wezterm.gui.screens()
+	local screen = screens.active
+	gui_win:set_position(screen.x, screen.y)
+	gui_win:maximize()
 end)
 
 return {
