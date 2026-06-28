@@ -54,8 +54,8 @@ Inspired by [Omarchy](https://omarchy.org/).
 - Prefix: `Ctrl+Space`
 - Default shell: Fish
 - Pane split: `prefix+v` (vertical) / `prefix+h` (horizontal)
-- Pane navigation: `Ctrl+Alt+Arrows`
-- Pane resize: `Shift+Alt+Arrows`
+- Pane navigation: `Shift+Alt+Arrows`
+- Pane resize: `Ctrl+Alt+Arrows`
 - Window switch: `Alt+Left/Right` or `Alt+<BEPO digit keys>` for windows 1-9
 - Session switch: `Alt+Up/Down`
 - Copy mode: vi-style (`v` to select, `y` to copy)
