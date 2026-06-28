@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Usage: tdl <ai> [<second_ai>]
+# tdl = Tmux Dev Layout
 # Create dev layout: editor (nvim) + AI pane(s) + terminal strip
 [[ -z $1 ]] && { echo "Usage: tdl <ai> [<ai2>]"; echo "  <ai>, <ai2>  CLI command to launch in the AI pane(s), e.g. claude, opencode, gemini, mods"; exit 1; }
 [[ -z $TMUX ]] && { echo "You must start tmux to use tdl."; exit 1; }

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Usage: tds
+# tds = Tmux Dev Square
 # Create square layout: nvim, diff watch, terminal, opencode
 [[ -n $1 ]] && { echo "Usage: tds"; exit 1; }
 [[ -z $TMUX ]] && { echo "You must start tmux to use tds."; exit 1; }
