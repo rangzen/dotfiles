@@ -1,0 +1,3 @@
+config:
+  MD012: # no-multiple-blanks: nvim formatter adds a trailing newline that is interpreted as a blank line, so maximum 1 instead of 0
+    maximum: 1
