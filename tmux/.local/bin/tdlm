@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Usage: tdlm <ai> [<second_ai>]
+# tdlm = Tmux Dev Layout Multi
 # Create one tdl window per subdirectory of current directory
 [[ -z $1 ]] && { echo "Usage: tdlm <ai> [<ai2>]"; echo "  <ai>, <ai2>  CLI command to launch in the AI pane(s), e.g. claude, opencode, gemini, mods"; exit 1; }
 [[ -z $TMUX ]] && { echo "You must start tmux to use tdlm."; exit 1; }
