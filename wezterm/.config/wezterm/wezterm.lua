@@ -14,6 +14,9 @@ return {
 
 	-- No decorations whatsoever
 	window_decorations = "NONE",
+	enable_wayland = false,
+	-- Check https://github.com/wezterm/wezterm/issues/6275
+	-- enable_wayland needed for window_decorations None
 
 	-- Hide tab bar (even with one tab)
 	enable_tab_bar = false,
