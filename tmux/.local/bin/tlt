@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Usage: tlt <ia>
+# tlt = Tmux Layout Tabs
+# Create three tabs: nvim with file explorer, AI tool, lazygit
+[[ -z $1 ]] && { echo "Usage: tlt <ia>"; echo "  <ia>  CLI command to launch in the AI tab, e.g. claude, opencode, gemini, mods"; exit 1; }
+[[ -z $TMUX ]] && { echo "You must start tmux to use tlt."; exit 1; }
+
+current_dir="${PWD}"
+ia="$1"
+
+ai_pane=$(tmux new-window -c "$current_dir" -n "$ia" -P -F '#{pane_id}')
+tmux send-keys -t "$ai_pane" "$ia" C-m
+
+nvim_pane=$(tmux new-window -c "$current_dir" -n "nvim" -P -F '#{pane_id}')
+tmux send-keys -t "$nvim_pane" "$EDITOR ." C-m
+
+lazygit_pane=$(tmux new-window -c "$current_dir" -n "lazygit" -P -F '#{pane_id}')
+tmux send-keys -t "$lazygit_pane" "lazygit" C-m
+
+tmux select-window -t "$ai_pane"
