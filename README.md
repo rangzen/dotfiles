@@ -39,6 +39,10 @@ If you clone elsewhere: `stow --target="$HOME" tmux`
 - Audio input: ALSA HDA DSP device
 - Keyboard layout: French BEPO
 
+## Hammerspoon
+
+- `F13` - interactive screenshot saved to `~/Pictures/` and copied to clipboard
+
 ## markdownlint
 
 Rules for `markdownlint-cli2` (`~/.markdownlint-cli2.yaml`). Used by the `nvim` package via `nvim-lint`.
