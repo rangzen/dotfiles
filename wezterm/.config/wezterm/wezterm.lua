@@ -33,5 +33,5 @@ return {
 	},
 
 	-- Run tmux directly
-	default_prog = { "tmux", "new-session", "-A", "-s", "main" },
+	-- default_prog = { "tmux", "new-session", "-A", "-s", "main" },
 }
