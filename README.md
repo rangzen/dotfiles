@@ -1,32 +1,34 @@
 # dotfiles
 
-My personal dotfiles, managed with [GNU Stow](https://www.gnu.org/software/stow/).
+My personal dotfiles, managed with [chezmoi](https://www.chezmoi.io/).
 
-Each top-level directory is a stow package whose contents mirror `$HOME`. Stow creates symlinks so the real files live here while tools find them at their expected paths.
+This repository is a chezmoi source directory. Files use chezmoi's naming conventions (`dot_`, `executable_`, and `.tmpl`) so the same source can be applied on macOS and Linux.
 
 ## Requirements
 
 ```bash
-# Debian/Ubuntu
-sudo apt install stow
-
-# macOS
-brew install stow
+# macOS / Linux
+brew install chezmoi
+# or: https://www.chezmoi.io/install/
 ```
 
 ## Usage
 
 ```bash
-git clone https://github.com/rangzen/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-
-stow tmux        # install a package
-stow */          # install all packages
-stow -D tmux     # remove a package
-stow -n tmux     # dry-run
+chezmoi init https://github.com/rangzen/dotfiles.git
+chezmoi diff
+chezmoi apply
 ```
 
-If you clone elsewhere: `stow --target="$HOME" tmux`
+To inspect the generated source: `chezmoi source-path`.
+
+Do not run chezmoi and Stow against the same files at the same time; remove the old Stow links first.
+
+## macOS and Linux
+
+Templates use `.chezmoi.os` for platform-specific values. Hammerspoon is ignored on Linux.
+
+Whispypy keeps its generated runtime configuration outside this repository. On each Linux machine, run its device discovery/validation tool once; the application saves the selected device in `~/.config/whispypy/config.conf`. This avoids versioning hardware-specific PipeWire IDs and lets Whispypy use its semi-automatic detection flow.
 
 ## WezTerm
 
