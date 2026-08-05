@@ -71,4 +71,5 @@ Must be run inside a tmux session. `<ai>` is any CLI command e.g. `claude`, `ope
 | `tdl`  | Tmux Dev Layout | `tdl <ai> [<ai2>]` - editor left, AI pane(s) right, terminal strip at bottom |
 | `tdlm` | Tmux Dev Layout Multi | `tdlm <ai> [<ai2>]` - runs `tdl` in one window per subdirectory |
 | `tds`  | Tmux Dev Square | `tds` - square 4-pane layout: nvim, diff watch, terminal, opencode |
+| `tlt`  | Tmux Layout Tabs | `tlt <ai>` - three tabs: AI tool, nvim with file explorer, lazygit |
 | `tsl`  | Tmux Split Launch | `tsl <count> <cmd>` - N tiled panes all running the same command |
