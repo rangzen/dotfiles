@@ -1,0 +1,17 @@
+# chezmoi:modify-template
+{{ .chezmoi.stdin }}
+{{- if not (contains "alias f=" .chezmoi.stdin) }}
+
+alias f="fish"
+{{- end }}
+{{- if not (contains "starship init bash" .chezmoi.stdin) }}
+
+eval "$(starship init bash)"
+{{- end }}
+{{- if not (contains "exec fish" .chezmoi.stdin) }}
+
+# Only start fish in specific terminals
+if [[ $(ps --no-header --pid=$PPID --format=comm) =~ ^(gnome-terminal|konsole|alacritty|kitty|wezterm-gui)$ && -z ${BASH_EXECUTION_STRING} ]]; then
+  exec fish
+fi
+{{- end -}}
