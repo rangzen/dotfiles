@@ -12,6 +12,8 @@ set -ag terminal-overrides ",xterm-256color:RGB"
 # Enable extended keys so tmux can distinguish modified Enter (Ctrl+Enter, Shift+Enter, etc.)
 # from a plain Enter. Needed for keybindings that depend on these combos (e.g. in Neovim/LazyVim)
 set -g extended-keys on
+# https://pi.dev/docs/latest/tmux#why-csi-u-is-recommended
+set -g extended-keys-format csi-u
 
 # Base Status Bar Styling
 # bg=default makes the bar transparent to WezTerm's background
