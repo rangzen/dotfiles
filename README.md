@@ -59,6 +59,7 @@ Machine-specific tools and secrets go in `~/.config/mise/config.local.toml`, whi
 | [lazygit](https://github.com/jesseduffield/lazygit) | Terminal UI for `git` commands |
 | [rg (ripgrep)](https://github.com/BurntSushi/ripgrep) | Fast recursive search that respects `.gitignore` |
 | [starship](https://starship.rs/) | Fast, customizable cross-shell prompt |
+| [tmux](https://github.com/tmux/tmux) | Terminal multiplexer |
 | [zoxide](https://github.com/ajeetdsouza/zoxide) | Smarter `cd` that learns your most-used directories |
 
 ### Adding machine-specific tools
