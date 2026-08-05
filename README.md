@@ -36,11 +36,6 @@ Whispypy keeps its generated runtime configuration outside this repository. On e
 - No decorations, no tab bar, no padding
 - Launches tmux directly on startup
 
-## Whispypy
-
-- Audio input: ALSA HDA DSP device
-- Keyboard layout: French BEPO
-
 ## Hammerspoon
 
 - `F13` - interactive screenshot saved to `~/Pictures/` and copied to clipboard
