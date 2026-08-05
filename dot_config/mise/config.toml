@@ -1,0 +1,11 @@
+[tools]
+bat = "latest"
+delta = "latest"
+eza = "latest"
+fd = "latest"
+fzf = "latest"
+lazydocker = "latest"
+lazygit = "latest"
+rg = "latest"
+starship = "latest"
+zoxide = "latest"

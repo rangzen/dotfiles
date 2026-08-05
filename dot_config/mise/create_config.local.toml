@@ -1,0 +1,7 @@
+# Machine-specific mise tools and secrets.
+# Created once by chezmoi; chezmoi will not touch it again, edit freely.
+# See README.md ("mise" section) for usage.
+
+[tools]
+
+[env]

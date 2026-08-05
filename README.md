@@ -12,6 +12,9 @@ brew install chezmoi
 # or: https://www.chezmoi.io/install/
 ```
 
+[mise](https://mise.jdx.dev/) is also required to install the CLI tools listed below.
+Install it manually first: `https://mise.jdx.dev/getting-started.html`.
+
 ## Usage
 
 ```bash
@@ -39,6 +42,52 @@ Whispypy keeps its generated runtime configuration outside this repository. On e
 ## Hammerspoon
 
 - `F13` - interactive screenshot saved to `~/Pictures/` and copied to clipboard
+
+## mise
+
+CLI tools declared in `~/.config/mise/config.toml`, installed with `mise install`.
+Machine-specific tools and secrets go in `~/.config/mise/config.local.toml`, which mise merges in but chezmoi never manages.
+
+| Tool | Description |
+|------|-------------|
+| [bat](https://github.com/sharkdp/bat) | `cat` clone with syntax highlighting and Git integration |
+| [delta](https://github.com/dandavison/delta) | Syntax-highlighting pager for `git`/`diff` output |
+| [eza](https://github.com/eza-community/eza) | Modern replacement for `ls` with icons and Git status |
+| [fd](https://github.com/sharkdp/fd) | Fast, user-friendly alternative to `find` |
+| [fzf](https://github.com/junegunn/fzf) | Command-line fuzzy finder |
+| [lazydocker](https://github.com/jesseduffield/lazydocker) | Terminal UI for Docker and Docker Compose |
+| [lazygit](https://github.com/jesseduffield/lazygit) | Terminal UI for `git` commands |
+| [rg (ripgrep)](https://github.com/BurntSushi/ripgrep) | Fast recursive search that respects `.gitignore` |
+| [starship](https://starship.rs/) | Fast, customizable cross-shell prompt |
+| [zoxide](https://github.com/ajeetdsouza/zoxide) | Smarter `cd` that learns your most-used directories |
+
+### Adding machine-specific tools
+
+Only tools every machine needs belong in the versioned `config.toml`.
+Anything specific to one machine (language runtimes, work-only CLIs, API keys) goes in `~/.config/mise/config.local.toml` instead, which is not part of this repository and is never applied by chezmoi.
+
+Add a tool without opening an editor:
+
+```bash
+mise use -g --path ~/.config/mise/config.local.toml node@lts
+```
+
+Or edit the file directly, which is also required for `[env]` since `mise use` only manages `[tools]`:
+
+```bash
+mkdir -p ~/.config/mise
+$EDITOR ~/.config/mise/config.local.toml
+```
+
+```toml
+[tools]
+node = "lts"
+
+[env]
+SOME_API_KEY = "..."
+```
+
+Run `mise install` afterwards. `mise config` shows which file each active tool comes from.
 
 ## markdownlint
 
