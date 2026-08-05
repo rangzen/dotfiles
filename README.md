@@ -15,6 +15,13 @@ brew install chezmoi
 [mise](https://mise.jdx.dev/) is also required to install the CLI tools listed below.
 Install it manually first: `https://mise.jdx.dev/getting-started.html`.
 
+Neovim itself is a manual install too: this repo only manages a few plugin files layered on top of the [LazyVim](https://www.lazyvim.org/) starter.
+
+```bash
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+```
+
 ## Usage
 
 ```bash
